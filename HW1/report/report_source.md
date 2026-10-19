@@ -6,16 +6,16 @@ Armen Petrosyan
 
 ## 1. Selected Innovation: Samsung Micro RGB
 
-The innovation I chose is **Samsung Micro RGB**, which is on TIME's *Best Inventions of 2025* list (TIME, 2025):
+The innovation I chose is Samsung Micro RGB, which is on TIME's *Best Inventions of 2025* list (TIME, 2025):
 https://time.com/collections/best-inventions-2025/7318277/samsung-micro-rgb/
 
 Most premium LCD TVs use one white or blue backlight and then pass the light through color filters. Micro RGB replaces this backlight with a very dense grid of tiny red, green and blue LEDs (each under 100 micrometers) that are controlled individually, so the color is created directly by the light source. According to TIME, this gives richer and more accurate colors and uses about 20% less power. The first model was a 115-inch TV priced at $29,999 and it was released in 2025 (TIME, 2025).
 
-The product became much more affordable very quickly. In December 2025 Samsung announced Micro RGB TVs in 55", 65", 75", 85", 100" and 115" sizes for 2026. In the US, the 55" model starts at $1,599.99 and the 65" R95H costs $3,199.99, which is actually a little cheaper than LG's 65" G6 OLED at $3,399.99. Other brands, mainly Hisense and TCL, are also investing in RGB LED TVs (ChannelNews, 2026). Because of this, I forecast the diffusion of **RGB LED / Micro RGB TVs as a product category**, with Samsung's Micro RGB as the product that started it.
+The product became much more affordable very quickly. In December 2025 Samsung announced Micro RGB TVs in 55", 65", 75", 85", 100" and 115" sizes for 2026. In the US, the 55" model starts at $1,599.99 and the 65" R95H costs $3,199.99, which is actually a little cheaper than LG's 65" G6 OLED at $3,399.99. Other brands, mainly Hisense and TCL, are also investing in RGB LED TVs (ChannelNews, 2026). Because of this, I forecast the diffusion of RGB LED / Micro RGB TVs as a product category, with Samsung's Micro RGB as the product that started it.
 
 ## 2. Historical Look-Alike Innovation: OLED TVs
 
-As a look-alike I chose the **OLED TV**. LG introduced it in 2013 and it started selling in meaningful volumes from 2015.
+As a look-alike I chose the OLED TV. LG introduced it in 2013 and it started selling in meaningful volumes from 2015.
 
 The two products are similar in several ways. Functionally, both are premium large-screen TVs that are sold mainly on picture quality (contrast, color, viewing angle) and not on new features, and both target the same customer: a household buying an expensive TV. Technologically, both change how light is produced at the pixel or zone level. OLED made every pixel produce its own light, and Micro RGB brings self-colored, finely controlled light sources to LCD. Both were marketed as "the next step" after regular LED-backlit LCD TVs. In terms of market impact, both started with very expensive, very large models and then moved down to 55–65 inch sizes within a few years. Today RGB LED TVs are being positioned directly against OLED, and Omdia expects RGB LED shipments (7.1 million) to be about the same as OLED shipments (about 6.9 million) by 2030 (Advanced Television, 2026; ChannelNews, 2026). This makes OLED's diffusion history the most relevant reference I could find.
 
@@ -47,7 +47,7 @@ I treat each TV shipped as one adopter (one household). This is not perfect beca
 
 ### 3.2. Scope
 
-I chose a **worldwide** scope for three reasons:
+I chose a worldwide scope for three reasons:
 
 1. Samsung sells the Micro RGB range in many countries (availability varies by country), and its main RGB LED competitors, TCL and Hisense, also sell globally (ChannelNews, 2026).
 2. All the data I use is global: the OLED series, the RGB LED forecasts from Omdia and TrendForce, and the total TV market size. Country-level numbers are not publicly available, so a country-level model would need made-up inputs.
@@ -59,9 +59,9 @@ There are regional differences (for example, Europe is OLED's biggest market wit
 
 The Bass model describes how many people adopt a new product in each period. It has three parameters:
 
-- **p**: coefficient of innovation (people who adopt on their own)
-- **q**: coefficient of imitation (people who adopt because others did)
-- **M**: market potential (total number of eventual adopters)
+- p: coefficient of innovation (people who adopt on their own)
+- q: coefficient of imitation (people who adopt because others did)
+- M: market potential (total number of eventual adopters)
 
 I used the discrete-time version of the Bass model:
 
@@ -71,9 +71,9 @@ $$
 
 where:
 
-- **N_t** is the number of new adopters in year t.
-- **A_(t-1)** is the cumulative number of adopters at the end of the previous year.
-- **p**, **q** and **M** are the innovation coefficient, imitation coefficient and market potential.
+- N_t is the number of new adopters in year t.
+- A_(t-1) is the cumulative number of adopters at the end of the previous year.
+- p, q and M are the innovation coefficient, imitation coefficient and market potential.
 
 I set cumulative adoption to zero before 2015, which is reasonable because OLED TV sales before 2015 were very small. The parameters were estimated in Python with nonlinear least squares (`scipy.optimize.least_squares`), which minimizes the squared differences between the actual yearly shipments and the model's predictions. All the code is in `bass_model.ipynb`.
 
@@ -110,9 +110,9 @@ $$
 M = \text{TV shipments per year} \times \text{RGB LED share} \times \text{life-cycle years}
 $$
 
-- **TV shipments per year:** 194.65 million, TrendForce's forecast for 2026 (TrendForce, 2026).
-- **RGB LED share:** Omdia expects 7.1 million RGB LED TVs in 2030 (Advanced Television, 2026). 7.1 / 195 ≈ 3.6% of all TVs.
-- **Life cycle:** OLED needed about 10 years (2015–2025) to go from its first real sales year to its plateau, so I assume RGB LED stays a leading premium option for about 10 years.
+- TV shipments per year: 194.65 million, TrendForce's forecast for 2026 (TrendForce, 2026).
+- RGB LED share: Omdia expects 7.1 million RGB LED TVs in 2030 (Advanced Television, 2026). 7.1 / 195 ≈ 3.6% of all TVs.
+- Life cycle: OLED needed about 10 years (2015–2025) to go from its first real sales year to its plateau, so I assume RGB LED stays a leading premium option for about 10 years.
 
 $$
 M = 194.65 \times 0.036 \times 10 \approx 70 \text{ million TVs}
@@ -162,7 +162,7 @@ Worldwide new and cumulative adopters (millions of TVs):
 | 2039 | 1.61 | 67.95 | 0.89 | 2.68 |
 | 2040 | 0.94 | 68.89 | 0.52 | 1.56 |
 
-In the base case, yearly adoption grows from about 1.5 million in 2026 to about 5.1 million in 2030 and peaks in **2033 at about 8.2 million TVs**. After that it goes down as the market gets saturated. Cumulative adoption reaches about 17 million by 2030 and 54 million by 2035, and gets close to the 70 million limit around 2040. In the low and high scenarios the peak is also in 2033 (4.5 and 13.6 million), because the timing of the peak depends only on p and q, not on M.
+In the base case, yearly adoption grows from about 1.5 million in 2026 to about 5.1 million in 2030 and peaks in 2033 at about 8.2 million TVs. After that it goes down as the market gets saturated. Cumulative adoption reaches about 17 million by 2030 and 54 million by 2035, and gets close to the 70 million limit around 2040. In the low and high scenarios the peak is also in 2033 (4.5 and 13.6 million), because the timing of the peak depends only on p and q, not on M.
 
 If Samsung keeps its overall TV market share of about 18.8% (17.6 million of 93.74 million TVs in the first half of 2026, TrendForce, 2026), it would sell about 0.28 million Micro RGB TVs in 2026 and about 1.5 million per year at the peak. Since Samsung was first in this category, its real share of RGB TVs is probably higher in the early years.
 
@@ -182,7 +182,7 @@ To check whether the forecast is reasonable, I compared it with forecasts from t
 | 2026 | 1.7 million | TrendForce | 1.50 million |
 | 2030 | 7.1 million | Omdia | 5.11 million |
 
-For 2026, my estimate is between the Omdia and TrendForce numbers. For 2030, my model is about 30% lower than Omdia. This supports the idea from Section 2 that RGB LED could spread faster than OLED did. When I solved for the q that gives Omdia's 7.1 million in 2030 (keeping p and M the same), I got **q ≈ 0.56**. With this q the 2026 value is 1.63 million (still between the two analyst forecasts) and the peak moves one year earlier, to 2032 at about 10.2 million. So I think q between 0.44 and 0.56 is a reasonable range for this product, and my base forecast is the more conservative one.
+For 2026, my estimate is between the Omdia and TrendForce numbers. For 2030, my model is about 30% lower than Omdia. This supports the idea from Section 2 that RGB LED could spread faster than OLED did. When I solved for the q that gives Omdia's 7.1 million in 2030 (keeping p and M the same), I got q ≈ 0.56. With this q the 2026 value is 1.63 million (still between the two analyst forecasts) and the peak moves one year earlier, to 2032 at about 10.2 million. So I think q between 0.44 and 0.56 is a reasonable range for this product, and my base forecast is the more conservative one.
 
 ## 6. Limitations
 
